@@ -66,5 +66,12 @@ def quote_intent():
         .simple_card(quote["headline"], "\"" + quote["content"] + "\"")
 
 
+@ask.intent("WhoIntent")
+def who_intent():
+    text = "Elon Reeve Musk ist ein Unternehmer und Investor. Er hat sowohl die Staatsangehörigkeit seines Geburtslandes Südafrika als auch die von Kanada und den Vereinigten Staaten. Musk ist bekannt geworden durch seine Beteiligung an der Gründung des Online-Bezahlsystems PayPal sowie mit seinen Erfolgen mit dem privaten Raumfahrtunternehmen SpaceX und dem Elektroautohersteller Tesla."
+    return statement(text)\
+        .simple_card("Wer ist Elon Musk?", text)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

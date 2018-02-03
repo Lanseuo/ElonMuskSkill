@@ -2,6 +2,9 @@
   "intents": [
     {
       "intent": "QuoteIntent"
+    },
+    {
+      "intent": "WhoIntent"
     }
   ]
 }
