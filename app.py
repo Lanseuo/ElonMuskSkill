@@ -1,10 +1,11 @@
+import datetime
 import random
 
 from flask import Flask
 from flask_ask import Ask, statement
 
 app = Flask(__name__)
-ask = Ask(app, '/')
+ask = Ask(app, "/")
 
 
 quotes = [
@@ -73,5 +74,36 @@ def who_intent():
         .simple_card("Wer ist Elon Musk?", text)
 
 
-if __name__ == '__main__':
+@ask.intent("BirthIntent")
+def birth_intent():
+    return statement("Elon Musk wurde am 28. Juni 1971 in Pretoria geboren.")\
+        .simple_card("Elon Musks Geburt", "28. Juni 1971 in Pretoria")
+
+
+@ask.intent("BirthdayIntent")
+def birthday_intent():
+    day, month = 28, 6
+    if (datetime.date(datetime.date.today().year, month, day) - datetime.date.today()).days >= 0:
+        # Has not yet have birthday this year
+        days_until_birthday = (datetime.date(datetime.date.today().year, month, day) - datetime.date.today()).days
+    else:
+        days_until_birthday = (datetime.date(datetime.date.today().year + 1, month, day) - datetime.date.today()).days
+
+    if days_until_birthday == 0:
+        text = "Elon Musk hat heute Geburtstag! Alles Gute Elon Musk"
+    elif days_until_birthday == 1:
+        text = "Elon Musk hat morgen Geburtstag."
+    elif days_until_birthday == 2:
+        text = "Elon Musk hat übermorgen Geburtstag."
+    elif datetime.date(datetime.date.today().year, month, day) - datetime.date.today() == -1:
+        text = "Elon Musk hatte gestern Geburtstag."
+    elif datetime.date(datetime.date.today().year, month, day) - datetime.date.today() == -2:
+        text = "Elon Musk hatte vorgestern Geburstag."
+    else:
+        text = "Elon Musk hat am 28. Juni Geburtstag. Du musst noch {} Tage bis zu seinem Geburtstag warten.".format(days_until_birthday)
+
+    return statement(text)
+
+
+if __name__ == "__main__":
     app.run(debug=True)

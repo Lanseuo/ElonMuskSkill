@@ -5,6 +5,12 @@
     },
     {
       "intent": "WhoIntent"
+    },
+    {
+      "intent": "BirthIntent"
+    },
+    {
+      "intent": "BirthdayIntent"
     }
   ]
 }
