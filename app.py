@@ -1,12 +1,19 @@
+import config
 import datetime
 import random
+import re
+import twitter
 
 from flask import Flask
-from flask_ask import Ask, statement
+from flask_ask import Ask, statement, audio
 
 app = Flask(__name__)
 ask = Ask(app, "/")
 
+t = twitter.Api(config.twitter_consumer,
+                config.twitter_consumer_secret,
+                config.twitter_token,
+                config.twitter_token_secret)
 
 quotes = [
     {
@@ -113,6 +120,24 @@ def age_intent():
     age = datetime.date.today().year - 1971 - ((datetime.date.today().month,
                                                 datetime.date.today().day) < (6, 28))
     return statement("Elon Musk ist {} Jahre alt.".format(age))
+
+
+@ask.intent("TwitterIntent")
+def twitter_intent():
+    statuses = t.GetUserTimeline(screen_name='elonmusk', exclude_replies=True, include_rts=False)
+    tweets = " .. ".join([s.text for s in statuses])
+    tweets_without_urls = re.sub(
+        "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", '', tweets)
+    audio_url = "https://code.responsivevoice.org/getvoice.php?t={}&tl=en&sv=&vn=&pitch=0.5&rate=0.5&vol=1".format(
+        tweets_without_urls)
+    return audio("Elon Musk hat folgendes gepostet ..").play(audio_url)
+
+
+@ask.intent('AMAZON.PauseIntent')
+@ask.intent('AMAZON.StopIntent')
+@ask.intent('AMAZON.ResumeIntent')
+def stop():
+    return audio('').clear_queue(stop=True)
 
 
 if __name__ == "__main__":
