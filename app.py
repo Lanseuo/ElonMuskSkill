@@ -85,9 +85,11 @@ def birthday_intent():
     day, month = 28, 6
     if (datetime.date(datetime.date.today().year, month, day) - datetime.date.today()).days >= 0:
         # Has not yet have birthday this year
-        days_until_birthday = (datetime.date(datetime.date.today().year, month, day) - datetime.date.today()).days
+        days_until_birthday = (datetime.date(datetime.date.today().year,
+                                             month, day) - datetime.date.today()).days
     else:
-        days_until_birthday = (datetime.date(datetime.date.today().year + 1, month, day) - datetime.date.today()).days
+        days_until_birthday = (datetime.date(datetime.date.today().year +
+                                             1, month, day) - datetime.date.today()).days
 
     if days_until_birthday == 0:
         text = "Elon Musk hat heute Geburtstag! Alles Gute Elon Musk"
@@ -100,9 +102,17 @@ def birthday_intent():
     elif datetime.date(datetime.date.today().year, month, day) - datetime.date.today() == -2:
         text = "Elon Musk hatte vorgestern Geburstag."
     else:
-        text = "Elon Musk hat am 28. Juni Geburtstag. Du musst noch {} Tage bis zu seinem Geburtstag warten.".format(days_until_birthday)
+        text = "Elon Musk hat am 28. Juni Geburtstag. Du musst noch {} Tage bis zu seinem Geburtstag warten.".format(
+            days_until_birthday)
 
     return statement(text)
+
+
+@ask.intent("AgeIntent")
+def age_intent():
+    age = datetime.date.today().year - 1971 - ((datetime.date.today().month,
+                                                datetime.date.today().day) < (6, 28))
+    return statement("Elon Musk ist {} Jahre alt.".format(age))
 
 
 if __name__ == "__main__":
