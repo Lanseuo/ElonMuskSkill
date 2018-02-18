@@ -6,7 +6,7 @@ import re
 import twitter
 
 from flask import Flask
-from flask_ask import Ask, statement, audio
+from flask_ask import Ask, statement, audio, question
 from raven.contrib.flask import Sentry
 
 # Setup logging
@@ -87,6 +87,11 @@ quotes = [
         "content": "Wenn du morgens aufwachst und denkst, dass die Zukunft besser sein wird, ist das ein schöner Tag. Ansonsten ist er es nicht."
     }
 ]
+
+
+@ask.launch
+def launched():
+    return question("Was möchtest Du über Elon Musk wissen?")
 
 
 @ask.intent("QuoteIntent")
