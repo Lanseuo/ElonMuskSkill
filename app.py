@@ -1,14 +1,36 @@
 import config
 import datetime
+import logging
 import random
 import re
 import twitter
 
 from flask import Flask
 from flask_ask import Ask, statement, audio
+from raven.contrib.flask import Sentry
+
+# Setup logging
+if "envoironment" in dir(config) and config.envoironment == "development":
+    logging_handlers = [
+        logging.FileHandler(config.log_location + "/app.log"),
+        logging.StreamHandler()
+    ]
+else:
+    logging_handlers = [logging.FileHandler(config.log_location + "/app.log"), ]
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    handlers=logging_handlers
+)
+logger = logging.getLogger(__name__)
+
 
 app = Flask(__name__)
 ask = Ask(app, "/")
+
+# Setup Sentry error tracking
+if "sentry_token" in dir(config):
+    sentry = Sentry(app, dsn=config.sentry_token)
 
 t = twitter.Api(config.twitter_consumer,
                 config.twitter_consumer_secret,
