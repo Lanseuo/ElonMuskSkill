@@ -9,12 +9,12 @@ A german Alexa Skill about Elon Musk
 
 ## Questions
 
-- Alexa, frage Elon Musk nach Zitaten
-- Alexa, frage Elon Musk wer er ist
-- Alexa, frage Elon Musk wann er geboren wurde
-- Alexa, frage Elon Musk wann er Geburtstag hat
-- Alexa, frage Elon Musk wie alt er ist
-- Alexa, frage Elon Musk was es Neues gibt
+- Alexa, frage Elon Musk Informationen nach Zitaten
+- Alexa, frage Elon Musk Informationen wer er ist
+- Alexa, frage Elon Musk Informationen wann er geboren wurde
+- Alexa, frage Elon Musk Informationen wann er Geburtstag hat
+- Alexa, frage Elon Musk Informationen wie alt er ist
+- Alexa, frage Elon Musk Informationen was es Neues gibt
 
 ## Installation
 

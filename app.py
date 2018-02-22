@@ -163,8 +163,13 @@ def twitter_intent():
 @ask.intent('AMAZON.PauseIntent')
 @ask.intent('AMAZON.StopIntent')
 @ask.intent('AMAZON.ResumeIntent')
-def stop():
+def stop_intent():
     return audio('').clear_queue(stop=True)
+
+
+@ask.intent('AMAZON.HelpIntent')
+def help_intent():
+    return statement("Frage Elon Musk zum Beispiel .. Alexa, frage Elon Musk, wie alt er ist.")
 
 
 if __name__ == "__main__":
