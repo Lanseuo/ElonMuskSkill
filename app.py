@@ -152,7 +152,7 @@ def age_intent():
 @ask.intent("TwitterIntent")
 def twitter_intent():
     statuses = t.GetUserTimeline(screen_name='elonmusk', exclude_replies=True, include_rts=False)
-    tweets = " .. ".join([s.text for s in statuses])
+    tweets = " .. ".join([s.text for s in statuses]).replace("&amp;", "and")
     tweets_without_urls = re.sub(
         "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", '', tweets)
     audio_url = "https://code.responsivevoice.org/getvoice.php?t={}&tl=en&sv=&vn=&pitch=0.5&rate=0.5&vol=1".format(
