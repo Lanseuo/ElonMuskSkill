@@ -1,28 +1,28 @@
 {
-  "intents": [
-    {
-      "intent": "AMAZON.ResumeIntent"
-    },
-    {
-      "intent": "AMAZON.PauseIntent"
-    },
-    {
-      "intent": "QuoteIntent"
-    },
-    {
-      "intent": "WhoIntent"
-    },
-    {
-      "intent": "BirthIntent"
-    },
-    {
-      "intent": "BirthdayIntent"
-    },
-    {
-      "intent": "AgeIntent"
-    },
-    {
-      "intent": "TwitterIntent"
-    }
-  ]
+    "intents": [
+        {
+            "intent": "AMAZON.ResumeIntent"
+        },
+        {
+            "intent": "AMAZON.PauseIntent"
+        },
+        {
+            "intent": "QuoteIntent"
+        },
+        {
+            "intent": "WhoIntent"
+        },
+        {
+            "intent": "BirthIntent"
+        },
+        {
+            "intent": "BirthdayIntent"
+        },
+        {
+            "intent": "AgeIntent"
+        },
+        {
+            "intent": "TwitterIntent"
+        }
+    ]
 }
