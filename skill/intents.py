@@ -68,9 +68,8 @@ def age_intent():
 
 
 def stop_intent():
-    pass
+    return answer("Auf Wiedersehen!")
 
 
 def help_intent():
-    return answer("Frage Elon Musk zum Beispiel"
-                  " .. Alexa, frage Elon Musk, wie alt er ist.")
+    return question("Frage Elon Musk zum Beispiel, wie alt er ist.")

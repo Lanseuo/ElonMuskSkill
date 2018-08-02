@@ -16,33 +16,17 @@ A german Alexa Skill about Elon Musk
 - Alexa, frage Elon Musk Informationen wie alt er ist
 - Alexa, frage Elon Musk Informationen was es Neues gibt
 
-## Installation
+## Development
 
 ```bash
 git clone https://github.com/Lanseuo/ElonMuskSkill.git
-cd ElonMuskSkill
-pip3 install -r requirements.txt
 ```
 
-### Configuration
+## Deployment
 
 ```bash
-mv config-sample.py config.py
+./deploy.sh
 ```
-
-open config.py and insert your token
-
-## Usage
-
-```bash
-python3 app.py
-```
-
-## Made with
-
-- [Flask](http://flask.pocoo.org) - web framework
-- [Flask-Ask](https://github.com/johnwheeler/flask-ask) - Alexa Skill Kit
-- [Python Twitter](https://github.com/bear/python-twitter) - A Python wrapper around the Twitter API
 
 ## Meta
 
