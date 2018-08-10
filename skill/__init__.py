@@ -28,6 +28,8 @@ def on_intent(intent_request, session):
         return intents.age_intent()
     elif intent == "AMAZON.HelpIntent":
         return intents.help_intent()
+    elif intent == "AMAZON.CancelIntent":
+        return intents.stop_intent()
     elif intent == "AMAZON.StopIntent":
         return intents.stop_intent()
     else:

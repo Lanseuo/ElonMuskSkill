@@ -14,7 +14,6 @@ A german Alexa Skill about Elon Musk
 - Alexa, frage Elon Musk Informationen wann er geboren wurde
 - Alexa, frage Elon Musk Informationen wann er Geburtstag hat
 - Alexa, frage Elon Musk Informationen wie alt er ist
-- Alexa, frage Elon Musk Informationen was es Neues gibt
 
 ## Development
 
